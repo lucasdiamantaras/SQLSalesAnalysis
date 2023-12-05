@@ -3,10 +3,12 @@ select * from dbo.online_retail;
 -- some analysis queries
 
 -- Calculate total sales per country
-SELECT Country, SUM(UnitPrice * Quantity) AS TotalSales
+-- Unit price is in Pound sterling (or, British pound or simply GBP)
+SELECT Country, SUM(UnitPrice * Quantity) AS [TotalSales_£]
 FROM dbo.online_retail
 GROUP BY Country
-ORDER BY TotalSales DESC;
+ORDER BY [TotalSales_£] DESC;
+
 
 -- Count the number of orders per customer
 SELECT CustomerID, COUNT(DISTINCT InvoiceNo) AS NumberOfOrders
